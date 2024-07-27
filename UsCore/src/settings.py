@@ -1,0 +1,21 @@
+from envparse import Env
+
+from .config import POSTGRES_HOST, POSTGRES_NAME, POSTGRES_PASSWORD, POSTGRES_PORT, POSTGRES_USER
+
+env = Env()
+
+REAL_DATABSE_URL = env.str(
+	'REAL_DATABSE_URL',
+	default=f'postgresql+asyncpg://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_NAME}'
+)
+
+ALEMBIC_DATABSE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_NAME}"
+
+MEDIA_PATH = env.str(
+	"MEDIA_PATH",
+	default="static"
+)
+
+
+
+
